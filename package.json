@@ -12,7 +12,6 @@
   },
   "devDependencies": {
     "gulp": "^3.8.11",
-    "gulp-sequence": "^0.3.2",
     "gulp-shell": "^0.4.0",
     "polyclean": "0.0.1",
     "vulcanize": "^1.1.0"

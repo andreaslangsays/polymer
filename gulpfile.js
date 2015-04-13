@@ -1,7 +1,6 @@
 var gulp = require('gulp');
 var replace = require('gulp-replace');
 var shell = require('gulp-shell');
-var sequence = require('gulp-sequence');
 
 var polyclean = require('polyclean');
 
@@ -25,7 +24,7 @@ gulp.task('micro', shell.task(vulcanize(micro, 'dist')));
 gulp.task('mini', shell.task(vulcanize(mini, 'dist', [micro])));
 gulp.task('max', shell.task(vulcanize(max, 'dist', [mini, micro])));
 
-gulp.task('strip', function() {
+gulp.task('strip', ['micro', 'mini', 'max'], function() {
   return gulp.src('dist/*.html')
     .pipe(polyclean.cleanJsComments())
     // Get rid of erroneous html comments
@@ -39,7 +38,6 @@ gulp.task('strip', function() {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('build', sequence(['micro', 'mini', 'max'], 'strip'))
 
 // Default Task
-gulp.task('default', ['build']);
+gulp.task('default', ['strip']);

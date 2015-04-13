@@ -2,7 +2,8 @@
   "name": "polymer",
   "version": "0.8.0-rc.4",
   "main": [
-    "polymer.html"
+    "polymer*.html",
+    "src/**/*.html"
   ],
   "license": "http://polymer.github.io/LICENSE.txt",
   "ignore": [
